@@ -25,13 +25,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-<<<<<<< HEAD
         <activity android:name="com.example.app_miel.Login" />
-=======
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
->>>>>>> fa993db88cc0e151a8bccc6b326bea1dd9d0db25
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.app_miel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,8 +10,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.app_miel.data.Data_commandes;
 import com.example.app_miel.http_tool.Acces_HTTP;
 import com.example.app_miel.http_tool.AsyncResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -85,5 +90,23 @@ public class Login extends AppCompatActivity implements AsyncResponse {
     @Override
     public void processFinish(String output) {
 
+        try {
+            JSONObject reponse = new JSONObject(output);
+
+            if (!reponse.getString("login").equals("False")) {
+                Log.d("login", "login successful");
+
+                //Data_commandes data_commandes = Data_commandes.getInstance(output);
+
+                Intent intent = new Intent(getApplicationContext(), Menu_commandes.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(this, "Mot de passe ou indentifiant incorect", Toast.LENGTH_SHORT).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.d("erreur", "erreurJSON: " +e);
+        }
     }
 }

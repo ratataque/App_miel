@@ -1,6 +1,5 @@
 package com.example.app_miel;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,14 +9,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.app_miel.data.Data_commandes;
+import com.example.app_miel.data.Commandes;
+import com.example.app_miel.data.Data_commande;
 import com.example.app_miel.http_tool.Acces_HTTP;
 import com.example.app_miel.http_tool.AsyncResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 // Définiton de la class Login.
 public class Login extends AppCompatActivity implements AsyncResponse {
@@ -26,9 +24,9 @@ public class Login extends AppCompatActivity implements AsyncResponse {
     private EditText username;
     private EditText password;
     private Button btnLogin;
-    private static final String LOGINADDR = "http://192.168.223.130/mobile/login.php";
+    private static final String LOGINADDR = "http://192.168.1.6/mobile/login.php";
     // IP pc portable karl : 192.168.223.130
-    // IP pc EWAN :
+    // IP pc EWAN : 192.168.1.6
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +81,7 @@ public class Login extends AppCompatActivity implements AsyncResponse {
         accesDonnees.addParams("login", username);
         accesDonnees.addParams("password", mdp);
 
+        Log.d("login", "requete_connexion: ");
         accesDonnees.execute(LOGINADDR);
     }
 
@@ -93,14 +92,19 @@ public class Login extends AppCompatActivity implements AsyncResponse {
         try {
             JSONObject reponse = new JSONObject(output);
 
-            if (!reponse.getString("login").equals("False")) {
+            if (!reponse.getString("state").equals("false")) {
                 Log.d("login", "login successful");
+                Log.d("login", "processFinish: "+output);
 
-                //Data_commandes data_commandes = Data_commandes.getInstance(output);
+                Commandes commandes = Commandes.new_instance(reponse.getString("Commandes"));
 
-                Intent intent = new Intent(getApplicationContext(), Menu_commandes.class);
-                startActivity(intent);
-                finish();
+                Log.d("commande", "id_eleve: "+ commandes.getId_eleve());
+                Log.d("commande", "nom_client: "+ commandes.getListe_commandes().get(0).getNom_client());
+                Log.d("commande", "id_miel: "+ commandes.getListe_commandes().get(0).getListe_article().get(0).getId_miel());
+
+//                Intent intent = new Intent(getApplicationContext(), Menu_commandes.class);
+//                startActivity(intent);
+//                finish();
             } else {
                 Toast.makeText(this, "Mot de passe ou indentifiant incorect", Toast.LENGTH_SHORT).show();
             }

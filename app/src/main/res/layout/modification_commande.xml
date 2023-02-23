@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lyt_nom"
+            android:layout_width="match_parent"
+            android:layout_height="447dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_lab_nom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="NOM : " />
+
+            <TextView
+                android:id="@+id/tv_nom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="WALTER EWAN" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_rue"
+            android:layout_width="match_parent"
+            android:layout_height="465dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_lab_rue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RUE :" />
+
+            <TextView
+                android:id="@+id/tv_adresse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6 rue saint michel 67700 Otterswiller" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_produits"
+            android:layout_width="match_parent"
+            android:layout_height="731dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/lyt_scrol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_btn_suppr"
+            android:layout_width="match_parent"
+            android:layout_height="451dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_annul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF0000"
+                android:text="Annuler la Commande" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_btn_modif_valide"
+            android:layout_width="match_parent"
+            android:layout_height="448dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:foregroundGravity="center"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_modif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FF9800"
+                android:gravity="left"
+                android:text="Modifier"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btn_valide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#4CAF50"
+                android:gravity="right"
+                android:text="Valider"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

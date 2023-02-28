@@ -1,9 +1,5 @@
 package com.example.app_miel.data;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 
 public class Data_commande {
@@ -12,7 +8,7 @@ public class Data_commande {
     private ArrayList<Article_commande> liste_article;
     private int                         id_commande;
     private int                         id_client;
-    private int                         total_commande;
+    private int                         prix_total_commande;
     private String                      nom_client;
     private String                      prenom_client;
     private String                      adresse_client;
@@ -41,8 +37,8 @@ public class Data_commande {
         return id_commande;
     }
 
-    public int getTotal_commande() {
-        return total_commande;
+    public int getPrix_total_commande() {
+        return prix_total_commande;
     }
 
     public String getNom_client() {

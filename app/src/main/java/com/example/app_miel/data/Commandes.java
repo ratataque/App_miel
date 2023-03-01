@@ -10,16 +10,20 @@ public class Commandes {
 
     private static Commandes instance;
     private int                         id_eleve ;
+    private String                      nom_eleve;
+    private String                      prenom_eleve;
     private ArrayList<Data_commande>   liste_commandes;
 
-    public Commandes(int id_eleve) {
+    public Commandes(int id_eleve, String nom_eleve, String prenom_eleve) {
+        this.nom_eleve = nom_eleve;
+        this.prenom_eleve = prenom_eleve;
         this.id_eleve = id_eleve;
         liste_commandes = new ArrayList<Data_commande>();
     }
 
-    public static  synchronized Commandes init(int id_eleve) {
+    public static  synchronized Commandes init(int id_eleve, String nom_eleve, String prenom_eleve) {
         if (instance == null) {
-            instance = new Commandes(id_eleve);
+            instance = new Commandes(id_eleve, nom_eleve, prenom_eleve);
         }
         return instance;
     }
@@ -35,6 +39,14 @@ public class Commandes {
 
     public static synchronized Commandes getInstance() {
         return instance;
+    }
+
+    public String getNom_eleve() {
+        return nom_eleve;
+    }
+
+    public String getPrenom_eleve() {
+        return prenom_eleve;
     }
 
     public int getId_eleve() {

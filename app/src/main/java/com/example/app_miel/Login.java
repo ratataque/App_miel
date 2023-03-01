@@ -1,5 +1,6 @@
 package com.example.app_miel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +25,7 @@ public class Login extends AppCompatActivity implements AsyncResponse {
     private EditText username;
     private EditText password;
     private Button btnLogin;
-    private static final String LOGINADDR = "http://192.168.1.6/mobile/login.php";
+    private static final String LOGINADDR = "http://10.58.18.112/mobile/login.php";
     // IP pc portable karl : 192.168.223.130
     // IP pc EWAN : 192.168.1.6
 
@@ -61,8 +62,8 @@ public class Login extends AppCompatActivity implements AsyncResponse {
                 requete_connexion( nom, mdp);
 
                 // le toast permet d'afficher par une pop up un message, utile pour effectué des test
-                //Toast.makeText(Login.this, "USER : "+username.getText()+" MDP : "+password.getText(), Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(Login.this, "USER : "+username.getText()+" MDP : "+password.getText(), Toast.LENGTH_SHORT).show();
+    
 
             }
         });
@@ -98,13 +99,13 @@ public class Login extends AppCompatActivity implements AsyncResponse {
 
                 Commandes commandes = Commandes.new_instance(reponse.getString("Commandes"));
 
-                Log.d("commande", "id_eleve: "+ commandes.getId_eleve());
-                Log.d("commande", "nom_client: "+ commandes.getListe_commandes().get(0).getNom_client());
-                Log.d("commande", "id_miel: "+ commandes.getListe_commandes().get(0).getListe_article().get(0).getId_miel());
+                //Log.d("commande", "id_eleve: "+ commandes.getId_eleve());
+                //Log.d("commande", "nom_client: "+ commandes.getListe_commandes().get(0).getNom_client());
+                //Log.d("commande", "id_miel: "+ commandes.getListe_commandes().get(0).getListe_article().get(0).getId_miel());
 
-//                Intent intent = new Intent(getApplicationContext(), Menu_commandes.class);
-//                startActivity(intent);
-//                finish();
+               Intent intent = new Intent(getApplicationContext(), Menu_commande.class);
+               startActivity(intent);
+               finish();
             } else {
                 Toast.makeText(this, "Mot de passe ou indentifiant incorect", Toast.LENGTH_SHORT).show();
             }

@@ -109,7 +109,7 @@
                 android:paddingRight="15dp">
 
                 <Button
-                    android:id="@+id/btn_modif"
+                    android:id="@+id/btn_ajout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -118,7 +118,7 @@
                     android:maxWidth="800dp"
                     android:minWidth="300dp"
                     android:paddingLeft="16dp"
-                    android:text="Modifier"
+                    android:text="Ajouter"
                     android:textAlignment="center" />
             </LinearLayout>
 

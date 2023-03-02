@@ -25,7 +25,7 @@ public class Login extends AppCompatActivity implements AsyncResponse {
     private EditText username;
     private EditText password;
     private Button btnLogin;
-    private static final String LOGINADDR = "http://192.168.1.40/mobile/login.php";
+    private static final String LOGINADDR = "http://192.168.1.6/mobile/login.php";
     // IP pc portable karl : 192.168.223.130
     // IP pc fixe karl : 192.168.1.40
     // IP pc EWAN : 192.168.1.6

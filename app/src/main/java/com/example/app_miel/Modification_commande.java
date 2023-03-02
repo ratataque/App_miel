@@ -11,16 +11,19 @@ import com.example.app_miel.data.Commandes;
 import com.example.app_miel.data.Data_commande;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Modification_commande extends AppCompatActivity {
     private Commandes commandes;
+    private Map<Integer, Data_commande> liste_commandes;
+    private Data_commande commande_client;
+
     private TextView text_client;
     private TextView text_adresse;
 
-    private ArrayList<Data_commande> liste_commandes;
     private LinearLayout scroll_modif;
 
-    Intent intent = getIntent();
+//    private Intent intent = getIntent();
     private int id_client ;
 
 
@@ -34,18 +37,17 @@ public class Modification_commande extends AppCompatActivity {
         init();
     }
     private void init() {
-
         scroll_modif    = findViewById(R.id.lyt_scroll);
         text_client     = findViewById(R.id.tv_nom);
         text_adresse    = findViewById(R.id.tv_adresse);
-        id_client       = intent.getIntExtra("id", 0);
+        id_client       = getIntent().getIntExtra("id", 0);
 
-        for (Data_commande commande: liste_commandes) {
-            
-        }
+        commandes = Commandes.getInstance();
+        liste_commandes = commandes.getListe_commandes();
+        commande_client = liste_commandes.get(id_client);
 
         // Modification de la textView du haut de l'écran pour y afficher le nom et prénom de l'élève
-        text_client.setText("");
+        text_client.setText(commande_client.getNom_client());
     }
 
 

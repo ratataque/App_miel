@@ -5,6 +5,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class Commandes {
 
@@ -12,13 +14,13 @@ public class Commandes {
     private int                         id_eleve ;
     private String                      nom_eleve;
     private String                      prenom_eleve;
-    private ArrayList<Data_commande>   liste_commandes;
+    private Map<Integer, Data_commande> liste_commandes;
 
     public Commandes(int id_eleve, String nom_eleve, String prenom_eleve) {
         this.nom_eleve = nom_eleve;
         this.prenom_eleve = prenom_eleve;
         this.id_eleve = id_eleve;
-        liste_commandes = new ArrayList<Data_commande>();
+        liste_commandes = new Hashtable<>();
     }
 
     public static  synchronized Commandes init(int id_eleve, String nom_eleve, String prenom_eleve) {
@@ -53,7 +55,7 @@ public class Commandes {
         return id_eleve;
     }
 
-    public ArrayList<Data_commande> getListe_commandes() {
+    public Map<Integer, Data_commande> getListe_commandes() {
         return liste_commandes;
     }
 }

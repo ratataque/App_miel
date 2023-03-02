@@ -14,6 +14,7 @@ import com.example.app_miel.data.Commandes;
 import com.example.app_miel.data.Data_commande;
 import com.example.app_miel.http_tool.Acces_HTTP;
 import com.example.app_miel.http_tool.AsyncResponse;
+import com.example.app_miel.http_tool.Params;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +26,7 @@ public class Login extends AppCompatActivity implements AsyncResponse {
     private EditText username;
     private EditText password;
     private Button btnLogin;
-    private static final String LOGINADDR = "http://192.168.1.6/mobile/login.php";
+    private static final String LOGINADDR = "http://"+ Params.IP +"/mobile/login.php";
     // IP pc portable karl : 192.168.223.130
     // IP pc fixe karl : 192.168.1.40
     // IP pc EWAN : 192.168.1.6

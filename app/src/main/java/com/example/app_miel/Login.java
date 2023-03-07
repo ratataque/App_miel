@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_miel.data.Commandes;
+import com.example.app_miel.data.Data_miel;
+import com.example.app_miel.data.Miel;
 import com.example.app_miel.data.Data_commande;
 import com.example.app_miel.http_tool.Acces_HTTP;
 import com.example.app_miel.http_tool.AsyncResponse;
@@ -100,10 +102,14 @@ public class Login extends AppCompatActivity implements AsyncResponse {
                 Log.d("login", "processFinish: "+output);
 
                 Commandes commandes = Commandes.new_instance(reponse.getString("Commandes"));
+                Miel      miel      = Miel.new_instance(reponse.getString("Miel"));
+                Log.d("test_miel", "JSON : "+ reponse.getString("Miel"));
 
                 //Log.d("commande", "id_eleve: "+ commandes.getId_eleve());
                 //Log.d("commande", "nom_client: "+ commandes.getListe_commandes().get(0).getNom_client());
                 //Log.d("commande", "id_miel: "+ commandes.getListe_commandes().get(0).getListe_article().get(0).getId_miel());
+                Log.d("Miel", "miel : "+ miel.getListe_miel().get(0).getNom_miel());
+
 
                Intent intent = new Intent(getApplicationContext(), Menu_commande.class);
                startActivity(intent);

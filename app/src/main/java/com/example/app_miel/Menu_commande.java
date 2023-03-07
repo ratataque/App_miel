@@ -29,6 +29,8 @@ public class Menu_commande extends AppCompatActivity {
     private Map<Integer, Data_commande> liste_commandes;
     private LinearLayout scroll;
 
+    private Button btn_new_cmd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +51,25 @@ public class Menu_commande extends AppCompatActivity {
         // 3. Association avec la vue des objets avec lesquels on souhaite intéragir.
         scroll = findViewById(R.id.lyt_scroll);
         text_eleve = findViewById(R.id.tv_nom_eleve);
+        btn_new_cmd = findViewById(R.id.btn_new_commande);
 
         // Modification de la textView du haut de l'écran pour y afficher le nom et prénom de l'élève
         text_eleve.setText(commandes.getNom_eleve()+" "+commandes.getPrenom_eleve());
+
+
+        btn_new_cmd.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Définition de la nouvelle page qu'on chargera une fois le sleep terminé.
+                Intent intent = new Intent(getApplicationContext(), Nouvelle_commande.class);
+
+                // Lancement de l'activité préparé plu haut.
+                startActivity(intent);
+
+                // Tue l'activité en cours.
+                finish();
+            }
+        });
+
 
         // Boucle for permettant l'affichage de toute les commande créer dans la base de données par l'élève  en question.
         liste_commandes.forEach((id_client, commande) -> {

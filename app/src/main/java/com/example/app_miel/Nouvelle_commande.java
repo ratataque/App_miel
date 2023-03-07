@@ -1,0 +1,81 @@
+package com.example.app_miel;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.app_miel.data.Data_miel;
+import com.example.app_miel.data.Miel;
+
+import java.util.ArrayList;
+
+public class Nouvelle_commande extends AppCompatActivity {
+
+    private EditText nom_client;
+    private EditText prenom_client;
+    private EditText adresse_client;
+    private Button btn_validation;
+    private LinearLayout miel_scroll;
+    private Miel miel;
+    private ArrayList<Data_miel> liste_miel;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Attache le layout menu_commande à la page.
+        setContentView(R.layout.nouvelle_commande);
+        
+
+        init();
+    }
+
+    private void init() {
+        prenom_client = findViewById(R.id.etxt_prenom);
+        nom_client = findViewById(R.id.etxt_nom);
+        adresse_client = findViewById(R.id.etxt_adresse);
+        btn_validation = findViewById(R.id.btn_new_commande);
+        miel_scroll = findViewById(R.id.scrl_lyt_miels);
+        miel = Miel.getInstance();
+        liste_miel = miel.getListe_miel();
+
+        for (Data_miel objet_miel : liste_miel) {
+
+            LinearLayout lyt_global = new LinearLayout(this);
+            lyt_global.setPadding(50,35,0,0);
+            lyt_global.setId(objet_miel.getId_miel());
+            lyt_global.setOrientation(LinearLayout.VERTICAL);
+
+                LinearLayout lyt_haut = new LinearLayout(this);
+                lyt_haut.setOrientation(LinearLayout.VERTICAL);
+                lyt_global.addView(lyt_haut);
+
+                    TextView txt_nom_miel = new TextView(this);
+                    txt_nom_miel.setText(objet_miel.getNom_miel());
+                    lyt_haut.addView(txt_nom_miel);
+
+                LinearLayout lyt_bas = new LinearLayout(this);
+                lyt_bas.setOrientation(LinearLayout.HORIZONTAL);
+                lyt_global.addView(lyt_bas);
+
+                    TextView txt_prix = new TextView(this);
+                    txt_prix.setText("Prix : " + objet_miel.getPrix_miel() + "   Quantité : ");
+                    lyt_bas.addView(txt_prix);
+
+                    EditText qte = new EditText(this);
+                    qte.setText("O");
+                    lyt_bas.addView(qte);
+
+            miel_scroll.addView(lyt_global);
+        }
+
+
+
+    }
+
+}

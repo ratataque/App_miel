@@ -46,8 +46,12 @@ public class Modification_commande extends AppCompatActivity {
         liste_commandes = commandes.getListe_commandes();
         commande_client = liste_commandes.get(id_client);
 
-        // Modification de la textView du haut de l'écran pour y afficher le nom et prénom de l'élève
-        text_client.setText(commande_client.getNom_client());
+        // Modification de la textView du haut de l'écran pour y afficher le nom et prénom du client sélectionné
+        text_client.setText(commande_client.getNom_client()+" "+commande_client.getPrenom_client());
+
+        // Modification de la textView de l'adresse du client pour y afficher le client
+        text_adresse.setText(commande_client.getAdresse_client());
+
     }
 
 

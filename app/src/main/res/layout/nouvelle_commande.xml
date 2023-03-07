@@ -100,7 +100,7 @@
             android:id="@+id/lyt_bouton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.2"
+            android:layout_weight="1"
             android:dividerPadding="11dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
@@ -119,8 +119,8 @@
                 android:id="@+id/btn_annuler"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="Annuler" />
         </LinearLayout>

@@ -12,8 +12,8 @@
         <LinearLayout
             android:id="@+id/lyt_client"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="180dp"
+            android:minHeight="10dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -29,8 +29,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Adresse" />
+                    android:hint="Adresse"
+                    android:inputType="textPersonName" />
             </LinearLayout>
 
             <LinearLayout
@@ -50,8 +50,8 @@
                     android:layout_gravity="center"
                     android:ems="10"
                     android:foregroundGravity="center"
-                    android:inputType="textPersonName"
-                    android:text="Prénom  client" />
+                    android:hint="Prénom  client"
+                    android:inputType="textPersonName" />
             </LinearLayout>
 
             <LinearLayout
@@ -70,8 +70,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Nom  client" />
+                    android:hint="Nom  client"
+                    android:inputType="textPersonName" />
             </LinearLayout>
 
         </LinearLayout>

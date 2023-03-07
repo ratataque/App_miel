@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity implements AsyncResponse {
                startActivity(intent);
                finish();
             } else {
-//                Toast.makeText(this, "Mot de passe ou indentifiant incorect", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Mot de passe ou indentifiant incorect", Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();

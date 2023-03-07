@@ -78,11 +78,11 @@ public class Nouvelle_commande extends AppCompatActivity {
 
                     TextView txt_prix = new TextView(this);
                     txt_prix.setText("Prix : " + objet_miel.getPrix_miel() + "   Quantité : ");
-                    txt_prix.setInputType(InputType.TYPE_CLASS_NUMBER);
                     lyt_bas.addView(txt_prix);
 
                     EditText qte = new EditText(this);
-                    qte.setText("O");
+                    qte.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    qte.setHint("0");
                     lyt_bas.addView(qte);
 
             miel_scroll.addView(lyt_global);

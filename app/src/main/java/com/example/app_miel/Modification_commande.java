@@ -2,6 +2,8 @@ package com.example.app_miel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class Modification_commande extends AppCompatActivity {
 
     private TextView text_client;
     private TextView text_adresse;
+    private Button btn_valider;
 
     private LinearLayout scroll_modif;
 
@@ -35,11 +38,14 @@ public class Modification_commande extends AppCompatActivity {
         setContentView(R.layout.modification_commande);
 
         init();
+        ecoute_valider();
     }
+
     private void init() {
         scroll_modif    = findViewById(R.id.lyt_scroll);
         text_client     = findViewById(R.id.tv_nom);
         text_adresse    = findViewById(R.id.tv_adresse);
+        btn_valider     = findViewById(R.id.btn_valide);
         id_client       = getIntent().getIntExtra("id", 0);
 
         commandes = Commandes.getInstance();
@@ -54,5 +60,14 @@ public class Modification_commande extends AppCompatActivity {
 
     }
 
-
+    private void ecoute_valider() {
+        btn_valider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Menu_commande.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
 }

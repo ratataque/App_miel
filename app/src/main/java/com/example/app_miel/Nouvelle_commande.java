@@ -1,6 +1,9 @@
 package com.example.app_miel;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.app_miel.data.Data_miel;
 import com.example.app_miel.data.Miel;
 
+import java.security.PrivateKey;
 import java.util.ArrayList;
 
 public class Nouvelle_commande extends AppCompatActivity {
@@ -20,7 +24,9 @@ public class Nouvelle_commande extends AppCompatActivity {
     private EditText prenom_client;
     private EditText adresse_client;
     private Button btn_validation;
+    private Button btn_annuler;
     private LinearLayout miel_scroll;
+
     private Miel miel;
     private ArrayList<Data_miel> liste_miel;
 
@@ -30,9 +36,9 @@ public class Nouvelle_commande extends AppCompatActivity {
 
         // Attache le layout menu_commande à la page.
         setContentView(R.layout.nouvelle_commande);
-        
 
         init();
+        ecoute_annuler();
     }
 
     private void init() {
@@ -40,14 +46,21 @@ public class Nouvelle_commande extends AppCompatActivity {
         nom_client = findViewById(R.id.etxt_nom);
         adresse_client = findViewById(R.id.etxt_adresse);
         btn_validation = findViewById(R.id.btn_new_commande);
+        btn_annuler = findViewById(R.id.btn_annuler);
         miel_scroll = findViewById(R.id.scrl_lyt_miels);
+
         miel = Miel.getInstance();
         liste_miel = miel.getListe_miel();
 
+        int i = 0;
         for (Data_miel objet_miel : liste_miel) {
 
             LinearLayout lyt_global = new LinearLayout(this);
             lyt_global.setPadding(50,35,0,0);
+
+            int color = ((i % 2 == 0) ? Color.LTGRAY : Color.WHITE);
+            lyt_global.setBackgroundColor(color);
+            
             lyt_global.setId(objet_miel.getId_miel());
             lyt_global.setOrientation(LinearLayout.VERTICAL);
 
@@ -65,6 +78,7 @@ public class Nouvelle_commande extends AppCompatActivity {
 
                     TextView txt_prix = new TextView(this);
                     txt_prix.setText("Prix : " + objet_miel.getPrix_miel() + "   Quantité : ");
+                    txt_prix.setInputType(InputType.TYPE_CLASS_NUMBER);
                     lyt_bas.addView(txt_prix);
 
                     EditText qte = new EditText(this);
@@ -72,10 +86,19 @@ public class Nouvelle_commande extends AppCompatActivity {
                     lyt_bas.addView(qte);
 
             miel_scroll.addView(lyt_global);
+            i++;
         }
+    }
 
-
-
+    private void ecoute_annuler() {
+        btn_annuler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Menu_commande.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
 }

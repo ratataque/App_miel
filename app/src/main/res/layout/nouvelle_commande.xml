@@ -100,16 +100,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.2"
-            android:orientation="vertical">
+            android:dividerPadding="11dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:drawablePadding="4dp"
                 android:foregroundGravity="center"
                 android:text="Création de la commande" />
+
+            <Button
+                android:id="@+id/btn_annuler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Annuler" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

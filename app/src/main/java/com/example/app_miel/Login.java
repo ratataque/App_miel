@@ -66,7 +66,7 @@ public class Login extends AppCompatActivity implements AsyncResponse {
                 requete_connexion( nom, mdp);
 
                 // le toast permet d'afficher par une pop up un message, utile pour effectué des test
-                Toast.makeText(Login.this, "USER : "+username.getText()+" MDP : "+password.getText(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Login.this, "USER : "+username.getText()+" MDP : "+password.getText(), Toast.LENGTH_SHORT).show();
     
 
             }
@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity implements AsyncResponse {
                startActivity(intent);
                finish();
             } else {
-                Toast.makeText(this, "Mot de passe ou indentifiant incorect", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Mot de passe ou indentifiant incorect", Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();

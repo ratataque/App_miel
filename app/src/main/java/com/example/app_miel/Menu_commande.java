@@ -3,6 +3,7 @@ package com.example.app_miel;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -86,6 +87,9 @@ public class Menu_commande extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), Modification_commande.class);
                     intent.putExtra("id", commande.getId_client());
+
+//                    Log.d("test", "onClick: "+ commande.getId_client().toString());
+
                     startActivity(intent);
                     finish();
                 }

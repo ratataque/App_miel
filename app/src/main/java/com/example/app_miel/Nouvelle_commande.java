@@ -168,10 +168,10 @@ public class Nouvelle_commande extends AppCompatActivity implements AsyncRespons
                     }
                 }
 
-                Data_commande dataCommande = new Data_commande(new_liste_article, prix_total, nom, prenom, adresse);
+                data_commande = new Data_commande(new_liste_article, prix_total, nom, prenom, adresse);
                 Gson gson = new Gson();
 
-                envoi_commande(gson.toJson(dataCommande));
+                envoi_commande(gson.toJson(data_commande));
             }
         });
     }
@@ -203,15 +203,14 @@ public class Nouvelle_commande extends AppCompatActivity implements AsyncRespons
             JSONObject reponse = new JSONObject(output);
 
             if (!reponse.getString("state").equals("false")) {
-                Integer id_commande = Integer.parseInt(reponse.getString("id_commande"));
-                data_commande.setId_commande(id_commande);
-                data_commande.setId_client(Integer.parseInt(reponse.getString("id_client")));
+                Integer id_client = Integer.parseInt(reponse.getString("id_client"));
+                data_commande.setId_commande(Integer.parseInt(reponse.getString("id_commande")));
+                data_commande.setId_client(id_client);
 
                 Map<Integer, Data_commande> liste_commandes = Commandes.getInstance().getListe_commandes();
+//                Log.d("test", "processFinish: "+id_client);
 
-                liste_commandes.put(id_commande, data_commande);
-
-
+                liste_commandes.put(id_client, data_commande);
 
                 Intent intent = new Intent(getApplicationContext(), Menu_commande.class);
                 startActivity(intent);

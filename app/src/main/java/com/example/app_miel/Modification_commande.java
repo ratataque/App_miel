@@ -2,6 +2,7 @@ package com.example.app_miel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -50,6 +51,7 @@ public class Modification_commande extends AppCompatActivity {
 
         commandes = Commandes.getInstance();
         liste_commandes = commandes.getListe_commandes();
+//        Log.d("test", "init: "+ id_client);
         commande_client = liste_commandes.get(id_client);
 
         // Modification de la textView du haut de l'écran pour y afficher le nom et prénom du client sélectionné

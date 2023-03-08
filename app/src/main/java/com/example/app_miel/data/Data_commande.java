@@ -8,13 +8,13 @@ public class Data_commande {
     private ArrayList<Article_commande> liste_article;
     private Integer                     id_commande;
     private Integer                     id_client;
-    private Integer                     prix_total_commande;
+    private Float                     prix_total_commande;
     private String                      nom_client;
     private String                      prenom_client;
     private String                      adresse_client;
 
 
-    public Data_commande(ArrayList<Article_commande> liste_article, Integer prix_total_commande, String nom_client, String prenom_client, String adresse_client ) {
+    public Data_commande(ArrayList<Article_commande> liste_article, Float prix_total_commande, String nom_client, String prenom_client, String adresse_client ) {
         this.liste_article = liste_article;
         this.prix_total_commande = prix_total_commande;
         this.nom_client = nom_client;
@@ -37,7 +37,7 @@ public class Data_commande {
         return id_commande;
     }
 
-    public Integer getPrix_total_commande() {
+    public Float getPrix_total_commande() {
         return prix_total_commande;
     }
 

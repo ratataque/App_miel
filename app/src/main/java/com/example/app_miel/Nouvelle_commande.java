@@ -138,9 +138,14 @@ public class Nouvelle_commande extends AppCompatActivity implements AsyncRespons
                 for (int i = 0; i < miel_scroll.getChildCount();i++) {
                     LinearLayout lyt_miel = (LinearLayout) miel_scroll.getChildAt(i);
                     Integer id_miel = lyt_miel.getId();
+
                     LinearLayout lyt_prix_quantite = (LinearLayout) lyt_miel.getChildAt(1);
                     EditText edt_quantite = (EditText) lyt_prix_quantite.getChildAt(3);
-                    Integer quantite = Integer.parseInt(edt_quantite.getText().toString());
+
+                    Integer quantite = -1;
+                    if (!edt_quantite.getText().toString().equals("")) {
+                        quantite = Integer.parseInt(edt_quantite.getText().toString());
+                    }
                     //Toast.makeText(Nouvelle_commande.this, "Quantité : "+quantite.toString(), Toast.LENGTH_SHORT).show();
 
                     if (quantite >0){

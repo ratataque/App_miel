@@ -61,7 +61,7 @@ public class Modification_commande extends AppCompatActivity implements AsyncRes
         text_client     = findViewById(R.id.tv_nom);
         text_adresse    = findViewById(R.id.tv_adresse);
         btn_valider     = findViewById(R.id.btn_valide);
-        btn_annuler     = findViewById(R.id.btn_annuler);
+        btn_annuler     = findViewById(R.id.btn_annul);
         id_client       = getIntent().getIntExtra("id", 0);
 
         commandes = Commandes.getInstance();
@@ -108,12 +108,14 @@ public class Modification_commande extends AppCompatActivity implements AsyncRes
 
         // Ajoute des paramètre à accèsDonnees.
         accesDonnees.addParams("id_client", id_client);
+        accesDonnees.addParams("id_eleve", Integer.toString(Commandes.getInstance().getId_eleve()));
 
         accesDonnees.execute(ANNULADDR);
     }
 
     @Override
     public void processFinish(String output) {
+        Log.d("json", "processFinish: "+output);
         try {
             JSONObject reponse = new JSONObject(output);
 

@@ -77,28 +77,25 @@ public class Nouvelle_commande extends AppCompatActivity {
                     lyt_haut.addView(txt_nom_miel);
 
                 LinearLayout lyt_bas = new LinearLayout(this);
-                lyt_bas.setOrientation(LinearLayout.VERTICAL);
+                lyt_bas.setOrientation(LinearLayout.HORIZONTAL);
                 lyt_global.addView(lyt_bas);
 
                     TextView txt_prix = new TextView(this);
                     txt_prix.setText("Prix : ");
-                    txt_prix.setId(1);
-                    //lyt_bas.addView(txt_prix);
+                    lyt_bas.addView(txt_prix);
 
                     TextView prix = new TextView(this);
-                    txt_prix.setText(Float.toString(objet_miel.getPrix_miel()));
-                    //lyt_bas.addView(prix);
+                    prix.setText(Float.toString(objet_miel.getPrix_miel()));
+                    lyt_bas.addView(prix);
 
                     TextView txt_qte = new TextView(this);
-                    txt_prix.setText("Quantité : ");
-                    //lyt_bas.addView(txt_qte);
+                    txt_qte.setText("     Quantité : ");
+                    lyt_bas.addView(txt_qte);
 
                     EditText qte = new EditText(this);
                     qte.setInputType(InputType.TYPE_CLASS_NUMBER);
                     qte.setHint("0");
-                    lyt_bas.addView(qte,0);
-                    lyt_bas.addView(txt_prix, 0);
-                    lyt_bas.addView(prix,0);
+                    lyt_bas.addView(qte);
 
             miel_scroll.addView(lyt_global);
             i++;

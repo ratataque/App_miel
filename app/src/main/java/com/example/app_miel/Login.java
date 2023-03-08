@@ -108,7 +108,7 @@ public class Login extends AppCompatActivity implements AsyncResponse {
                 //Log.d("commande", "id_eleve: "+ commandes.getId_eleve());
                 //Log.d("commande", "nom_client: "+ commandes.getListe_commandes().get(0).getNom_client());
                 //Log.d("commande", "id_miel: "+ commandes.getListe_commandes().get(0).getListe_article().get(0).getId_miel());
-                Log.d("Miel", "miel : "+ miel.getListe_miel().get(0).getNom_miel());
+                //Log.d("Miel", "miel : "+ miel.getListe_miel().get(0).getNom_miel());
 
 
                Intent intent = new Intent(getApplicationContext(), Menu_commande.class);

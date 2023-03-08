@@ -4,27 +4,27 @@ import java.util.ArrayList;
 
 public class Data_commande {
 
-    private static Data_commande instance;
+
     private ArrayList<Article_commande> liste_article;
-    private int                         id_commande;
-    private int                         id_client;
-    private int                         prix_total_commande;
+    private Integer                     id_commande;
+    private Integer                     id_client;
+    private Integer                     prix_total_commande;
     private String                      nom_client;
     private String                      prenom_client;
     private String                      adresse_client;
 
 
-    public Data_commande() {
-
+    public Data_commande(ArrayList<Article_commande> liste_article, Integer prix_total_commande, String nom_client, String prenom_client, String adresse_client ) {
+        this.liste_article = liste_article;
+        this.prix_total_commande = prix_total_commande;
+        this.nom_client = nom_client;
+        this.prenom_client = prenom_client;
+        this.adresse_client = adresse_client;
     }
 
-    public static Data_commande init() {
-        instance = new Data_commande();
-        return instance;
-    }
 
 
-    public int getId_client() {
+    public Integer getId_client() {
         return id_client;
     }
 
@@ -33,11 +33,11 @@ public class Data_commande {
         return liste_article;
     }
 
-    public int getId_commande() {
+    public Integer getId_commande() {
         return id_commande;
     }
 
-    public int getPrix_total_commande() {
+    public Integer getPrix_total_commande() {
         return prix_total_commande;
     }
 

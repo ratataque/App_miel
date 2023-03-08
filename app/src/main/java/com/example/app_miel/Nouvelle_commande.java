@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.app_miel.data.Data_commande;
 import com.example.app_miel.data.Data_miel;
 import com.example.app_miel.data.Miel;
 
@@ -27,8 +28,10 @@ public class Nouvelle_commande extends AppCompatActivity {
     private Button btn_annuler;
     private LinearLayout miel_scroll;
 
+
     private Miel miel;
     private ArrayList<Data_miel> liste_miel;
+    private Data_commande data_commande;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class Nouvelle_commande extends AppCompatActivity {
         btn_validation = findViewById(R.id.btn_new_commande);
         btn_annuler = findViewById(R.id.btn_annuler);
         miel_scroll = findViewById(R.id.scrl_lyt_miels);
+
 
         miel = Miel.getInstance();
         liste_miel = miel.getListe_miel();
@@ -73,17 +77,28 @@ public class Nouvelle_commande extends AppCompatActivity {
                     lyt_haut.addView(txt_nom_miel);
 
                 LinearLayout lyt_bas = new LinearLayout(this);
-                lyt_bas.setOrientation(LinearLayout.HORIZONTAL);
+                lyt_bas.setOrientation(LinearLayout.VERTICAL);
                 lyt_global.addView(lyt_bas);
 
                     TextView txt_prix = new TextView(this);
-                    txt_prix.setText("Prix : " + objet_miel.getPrix_miel() + "   Quantité : ");
-                    lyt_bas.addView(txt_prix);
+                    txt_prix.setText("Prix : ");
+                    txt_prix.setId(1);
+                    //lyt_bas.addView(txt_prix);
+
+                    TextView prix = new TextView(this);
+                    txt_prix.setText(Float.toString(objet_miel.getPrix_miel()));
+                    //lyt_bas.addView(prix);
+
+                    TextView txt_qte = new TextView(this);
+                    txt_prix.setText("Quantité : ");
+                    //lyt_bas.addView(txt_qte);
 
                     EditText qte = new EditText(this);
                     qte.setInputType(InputType.TYPE_CLASS_NUMBER);
                     qte.setHint("0");
-                    lyt_bas.addView(qte);
+                    lyt_bas.addView(qte,0);
+                    lyt_bas.addView(txt_prix, 0);
+                    lyt_bas.addView(prix,0);
 
             miel_scroll.addView(lyt_global);
             i++;
@@ -99,6 +114,32 @@ public class Nouvelle_commande extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void ecoute_valider(){
+
+        btn_validation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nom      = nom_client.getText().toString();
+                String prenom   = prenom_client.getText().toString();
+                String adresse  = adresse_client.getText().toString();
+
+                for (int i = 0; i < miel_scroll.getChildCount();i++) {
+                    LinearLayout lyt_miel = (LinearLayout) miel_scroll.getChildAt(i);
+
+                    LinearLayout lyt_prix_quantite = (LinearLayout) lyt_miel.getChildAt(1);
+                    // Integer quantite = (LinearLayout) lyt_prix_quantite
+
+                }
+
+                    envoi_commande(adresse, nom, prenom);
+            }
+        });
+    }
+
+    private void envoi_commande(String adresse, String nom, String prenom){
+
     }
 
 }

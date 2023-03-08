@@ -25,10 +25,14 @@ import com.example.app_miel.http_tool.Params;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.security.PrivateKey;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class Nouvelle_commande extends AppCompatActivity implements AsyncResponse {
     private static final String INSERTADDR = "http://"+ Params.IP +"/mobile/insert.php";
@@ -189,5 +193,30 @@ public class Nouvelle_commande extends AppCompatActivity implements AsyncRespons
     @Override
     public void processFinish(String output) {
         Log.d("insert", "processFinish: "+output);
+
+        try {
+            JSONObject reponse = new JSONObject(output);
+
+            if (!reponse.getString("state").equals("false")) {
+                Integer id_commande = Integer.parseInt(reponse.getString("id_commande"));
+                data_commande.setId_commande(id_commande);
+                data_commande.setId_client(Integer.parseInt(reponse.getString("id_client")));
+
+                Map<Integer, Data_commande> liste_commandes = Commandes.getInstance().getListe_commandes();
+
+                liste_commandes.put(id_commande, data_commande);
+
+
+
+                Intent intent = new Intent(getApplicationContext(), Menu_commande.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(this, "La commande ne c'est pas intégré correctement", Toast.LENGTH_SHORT).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.d("erreur", "erreurJSON: " +e);
+        }
     }
 }

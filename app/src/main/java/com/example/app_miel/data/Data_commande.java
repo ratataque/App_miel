@@ -14,6 +14,7 @@ public class Data_commande {
     private String                      adresse_client;
 
 
+
     public Data_commande(ArrayList<Article_commande> liste_article, Float prix_total_commande, String nom_client, String prenom_client, String adresse_client ) {
         this.liste_article = liste_article;
         this.prix_total_commande = prix_total_commande;
@@ -51,5 +52,13 @@ public class Data_commande {
 
     public String getAdresse_client() {
         return adresse_client;
+    }
+
+    public void setId_commande(Integer id_commande) {
+        this.id_commande = id_commande;
+    }
+
+    public void setId_client(Integer id_client) {
+        this.id_client = id_client;
     }
 }

@@ -38,18 +38,23 @@ public class commande_a_modifie extends AppCompatActivity implements AsyncRespon
     private EditText adresse_client;
     private Button validation;
     private LinearLayout lyt_affichage;
+
     private Commandes commandes;
     private Map<Integer, Data_commande> liste_commandes;
+
     private ArrayList<Article_commande> liste_article;
     private Data_commande commande_client;
     private Integer id_client;
     private Miel miel;
+
     private ArrayList<Data_miel> liste_miel;
     private ArrayList<Integer> liste_id_miel;
     private ArrayList<Article_commande> new_liste_article;
     private Data_commande data_commande;
+
     private Integer id_eleve;
-     private Integer id_commande;
+    private Integer id_commande;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +80,7 @@ public class commande_a_modifie extends AppCompatActivity implements AsyncRespon
         liste_article       = commande_client.getListe_article();
 
         new_liste_article   = new ArrayList<Article_commande>();
-        liste_id_miel       = new ArrayList<>();
+        liste_id_miel       = new ArrayList<Integer>();
         liste_miel          = miel.getListe_miel();
 
         nom_client          = findViewById(R.id.edt_nom2);
@@ -208,7 +213,7 @@ public class commande_a_modifie extends AppCompatActivity implements AsyncRespon
                     EditText edt_quantite = (EditText) lyt_prix_quantite.getChildAt(3);
 
                     Integer quantite = -1;
-                    if (!edt_quantite.getText().toString().equals("")) {
+                    if (!edt_quantite.getText().toString().equals("") && !edt_quantite.getText().toString().equals("0")) {
                         quantite = Integer.parseInt(edt_quantite.getText().toString());
                     }
                     //Toast.makeText(Nouvelle_commande.this, "Quantité : "+quantite.toString(), Toast.LENGTH_SHORT).show();
@@ -230,6 +235,9 @@ public class commande_a_modifie extends AppCompatActivity implements AsyncRespon
                 }
 
                 data_commande = new Data_commande(new_liste_article, prix_total, nom, prenom, adresse);
+                data_commande.setId_client(id_client);
+                data_commande.setId_commande(id_commande);
+
                 Gson gson = new Gson();
 
                 envoi_commande(gson.toJson(data_commande));
@@ -265,16 +273,14 @@ public class commande_a_modifie extends AppCompatActivity implements AsyncRespon
             JSONObject reponse = new JSONObject(output);
 
             if (!reponse.getString("state").equals("false")) {
-                Integer id_client = Integer.parseInt(reponse.getString("id_client"));
-                data_commande.setId_commande(id_commande);
-                data_commande.setId_client(id_client);
 
-                Map<Integer, Data_commande> liste_commandes = Commandes.getInstance().getListe_commandes();
 //                Log.d("test", "processFinish: "+id_client);
 
                 liste_commandes.put(id_client, data_commande);
 
-                Intent intent = new Intent(getApplicationContext(), Menu_commande.class);
+                Intent intent = new Intent(getApplicationContext(), Modification_commande.class);
+                intent.putExtra("id", id_client);
+
                 startActivity(intent);
                 finish();
             } else {

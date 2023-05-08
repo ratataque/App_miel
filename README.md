@@ -36,4 +36,6 @@ cloner le repo
 </pre>
 - puis lancer l'ouvrir avec android studio
 - lancer [Le_miel_et_les_abeilles](https://github.com/ratataque/Le_miel_et_les_abeilles)
+- changer l'ip sous **app/java/com.eample.app_miel/http_tool/Params** avec la votre (voir screen)
+![alt text](https://github.com/ratataque/App_miel/blob/main/images_git/ip.png?raw=true)
 - puis lancer l'application mobile avec android studio

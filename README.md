@@ -24,6 +24,7 @@ appli mobil qui fonctionne avec la partie web [Le_miel_et_les_abeilles](https://
 ## Comment lancer le projet <a id="install"></a>
 
 ### Prerequis
+- git
 - [Le_miel_et_les_abeilles](https://github.com/ratataque/Le_miel_et_les_abeilles)
 - android studio
 

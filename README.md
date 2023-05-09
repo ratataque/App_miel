@@ -17,6 +17,7 @@ appli mobil qui fonctionne avec la partie web [Le_miel_et_les_abeilles](https://
 
 ## Quelques images du projet <a id="image"></a> 
 
+![alt text](https://github.com/ratataque/App_miel/blob/main/images_git/tableau.png?raw=true)
 ![alt text](https://github.com/ratataque/App_miel/blob/main/images_git/app_miel.gif?raw=true)
 
 ***
